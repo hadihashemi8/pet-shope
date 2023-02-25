@@ -1,0 +1,61 @@
+.active::after{
+    content: '';
+    width: 0;
+    height: 6px;
+    background-color: #7AB730;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transition: all .3s;
+
+}
+.active:hover::after{
+    left: 0;
+    width: 100%;
+    
+}
+
+.active2{
+    height: 250px;
+    border: 1px solid rgb(141, 141, 141);
+}
+.active3{
+    transform: rotate(180deg); 
+}
+#playIcon{
+    animation: playing 1s infinite linear;
+}
+.swiper-slide{
+    width: 200px;
+}
+.backet-count{
+animation: shake .6s linear ;
+
+}
+
+@keyframes shake {
+    0%{
+        transform: translateY(0) rotate(-360deg);
+    }50%{
+        transform: translateY(-100%) ;
+    }
+    100%{
+        transform: translateY(0) rotate(360deg);
+    }
+}
+
+
+@keyframes playing{
+    0%{
+        box-shadow: 0 ;
+    
+    }50%{
+        box-shadow: 0 0 1px 15px  rgba(255 , 255 , 255 ,0.3);
+        
+    }
+    100%{
+box-shadow: 0 0 1px 20px  transparent;
+    }
+}
+
+

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="../dist/output.css">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"rel="stylesheet"/>
+ <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  />
+  
+  <title>Pet Shope</title>
+</head>
+<body>
+
+  <div class="max-w-screen-2xl mx-auto relative ">
+    <!-- back to top part -->
+    <span ><i  id="backTop"></i></span>
+
+    <!-- shopping part -->
+    <div class=" shadow-xl bg-white  group fixed -left-full top-[25%] z-20 p-1 cursor-pointer flex items-center transition-all duration-300" id="shopingCart">
+      <span class="relative">
+        <i class="fas fa-cart-arrow-down text-2xl text-green1"></i>
+      <span class=" absolute top-0 md:-top-1 -right-1 text-[8px] md:text-[10px] text-white bg-red-600 p-[2px] rounded-full" id="backet-count">0</span>
+      </span>
+        <i class="fas fa-angle-down ml-3 group-hover:text-green1" id="shopDownIcon"></i>
+        <div class="small:w-64  sm:w-96   h-0 flex flex-col items-center    overflow-y-scroll bg-gray1  absolute top-full left-[30%]  shadow-lg  transition-all duration-200  rounded-md rounded-tl-none" id="shopBacket">
+       <table class=" w-full  border-separate border-spacing-y-2 " >
+        <thead>
+          <tr >
+            <th class=" py-2  "><h4 class="text-[12px] mx-1  sm:text-sm  text-center font-semibold ">Product </h4></th>
+            <th class=" py-2  "><h4 class="text-[12px] mx-1  sm:text-sm  text-center font-semibold "> Title</h4></th>
+            <th class=" py-2  "><h4 class="text-[12px] mx-1  sm:text-sm  text-center font-semibold "> Price</h4></th>
+            <th class=" py-2  "><h4 class="text-[12px] mx-1  sm:text-sm  text-center font-semibold ">Count</h4></th>
+            <th class=" py-2    ">
+             <button class="text-[8px] mx-1 sm:text-xs   font-semibold p-2 py-[6px] rounded-lg bg-red-700 hover:bg-red-600 text-white" id="productClear">Clear All</button>
+            </th>
+          </tr>
+        </thead>
+        <tbody id="productsTable">
+          <!-- <tr>
+            <td class="text-center bg-green1  py-2 px-1 border-[1px] border-black"><img class="w-12 h-8 sm:h-12 " src="../img/product-1.png" alt=""></td>
+            <td class="text-center bg-green1 py-2 px-1 border-[1px] border-black"><p class="text-center  font-bold  text-xs w-full">title</p></td>
+            <td class="text-center bg-green1 py-2 px-1 border-[1px] border-black"><p class="text-center  font-bold  text-xs w-full">12$</p></td>
+            <td class="text-center bg-green1 py-2 px-1 border-[1px] border-black"><input class="w-8 h-4 pl-1 outline-none text-xs" type="number" value="1"></td>
+            <td class="text-center bg-green1 py-2 px-1 border-[1px] border-black"><button class="bg-red-700 hover:bg-red-600 text-white  text-[10px] p-2 py-[3px] sm:px-3 sm:py-2">Remove</button></td>
+          </tr> -->
+        </tbody>
+       </table>
+       <div class="w-full mt-4 flex items-center justify-between ">
+         <h4 class=" font-semibold text-xs sm:text-sm" id="totalProduct"></h4>
+         <button class="py-2 px-4 text-xs bg-green1 font-semibold hover:text-white hover:bg-red-600" id="purchaseBtn">Purchase</button>
+       </div>
+        </div>
+    </div>
+
+    <!-- login form -->
+<div class="w-full h-[100vh]   flex items-center justify-center fixed -top-full left-0 z-50 px-4 " id="login-form">
+<div class="relative w-full small2:w-72 h-1/2 bg-green1 flex flex-col items-center justify-center" tabindex="1" id="login-part">
+  <i class="fas fa-times absolute right-3 top-3 text-white cursor-pointer" id="close-Modal"></i>
+<h1 class="text-center text-xl text-white font-semibold">Login form</h1>
+<div class=" w-full  mt-2 flex flex-col px-4">
+  <div class="flex flex-col relative mt-4 ">
+    <input class="outline-none p-1 bg-transparent border-[1px] rounded-md border-white peer " required type="text">
+    <label class="text-white pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 bg-green1 transition-all duration-400 peer-focus:px-2 peer-focus:text-xs  peer-focus:-top-[2px] peer-focus:border-x-[1px] peer-focus:border-white  peer-valid:px-2 peer-valid:text-xs  peer-valid:-top-[2px] peer-valid:border-x-[1px] peer-valid:border-green1"   for="User Name">User Name</label>
+  </div>
+  <div class=" w-full  flex flex-col relative mt-4  ">
+<input class="outline-none p-1 bg-transparent border-[1px] rounded-md border-white  peer " required type="password">
+<label class="text-white pointer-events-none absolute top-1/2 left-2 -translate-y-1/2 bg-green1 transition-all duration-400 peer-focus:px-2 peer-focus:text-xs  peer-focus:-top-[2px] peer-focus:bg-white  peer-focus:text-green1 peer-focus:rounded-sm  peer-valid:px-2 peer-valid:text-xs  peer-valid:-top-[2px] peer-valid:bg-white peer-valid:text-green1 peer-valid:rounded-sm"  for="Password">Password</label>
+  </div>
+  <button class=" w-full mt-6 bg-white p-2 text-green1 font-semibold  ">Login</button>
+</div>
+</div>
+</div>
+
+<!-- reload -->
+<div class="w-full h-[100vh] bg-white flex items-center justify-center fixed top-0 left-0 z-50 opacity-1" id="load-Part">
+<div class="w-[60px] h-[60px] rounded-full border-8 border-t-green1 animate-[reload_1s_ease-in-out_infinite]">
+
+</div>
+</div>
+
+
+<!--top scroll -->
+<div class="h-0 w-2 bg-green1 fixed left-0 bottom-0 z-40" id="my-scroll">
+</div>
+
+
+<!-- Internet check -->
+<h1 class="bg-green1 p-4 rounded-md text-white fixed top-10 left-4 z-30 hidden " id="netCheck"></h1>
+
+
+
+    <!-- menu part -->
+    <div class="w-full relative" id="Home" >
+      <!-- navigation part -->
+      <div class=" flex flex-col small:flex-wrap small:flex-row     small:justify-between  p-2 small:p-0 " >
+        <!-- top part -->
+        <div class=" w-full  border-[1px] border-gray-400 items-center hidden lg:flex ">
+         <div class="w-1/3 p-4 flex justify-center items-center">
+          <i class="fas fa-map-marker-alt text-5xl mr-4 text-green1"></i>
+          <div>
+            <h3 class="text-2xl font-semibold">OUR OFFICE</h3>
+            <p class="text-gray-500 text-base">123 Street, New York, USA</p>
+          </div>
+         </div>
+         <div class="w-1/3 p-4 border-x-[1px] border-gray-400  flex justify-center items-center">
+          <i class="fas fa-envelope-open-text text-5xl mr-4 text-green1"></i>
+          <div>
+            <h3 class="text-2xl font-semibold">EMAIL US</h3>
+            <p class="text-gray-500 text-base">info@example.com</p>
+          </div>
+         </div>
+         <div class="w-1/3 p-4 flex justify-center items-center">
+          <i class="fas fa-phone-volume text-5xl mr-4 text-green1"></i>
+          <div>
+            <h3 class="text-2xl font-semibold">CALL US</h3>
+            <p class="text-gray-500 text-base">+012 345 6789</p>
+          </div>
+         </div>
+        </div>
+        <!-- bottom part -->
+        <div class="   w-full small:flex  small:flex-wrap  small:flex-row small:justify-between small:item-center p-2  lg:p-0   " id="navPart">
+          <div class="flex items-center lg:ml-8 lg:p-4  ">
+            <span><i class="fas fa-store text-xl lg:text-5xl text-green1" id="title-icon"></i></span>
+            <h1 class="ml-5 text-2xl lg:text-4xl font-bold" id="title">Pet Shop</h1>
+          </div>
+             <!-- navigation bar -->
+   <div class=" w-3/5 hidden lg:flex items-center">
+    <ul class=" w-full   flex   h-full  " > 
+      <li class="w-1/6 px-4   flex items-center justify-center  "><a class="active h-full pt-6 relative text-sm xl:text-lg  font-semibold hover:text-green1  nav-Btn" href="#">Home</a></li>
+      <li class="w-1/6 px-4    flex items-center justify-center "><a class="active h-full pt-6 relative text-sm xl:text-lg  font-semibold hover:text-green1  nav-Btn" href="#ourServices">Service</a></li>
+      <li class="w-1/6 px-4    flex items-center justify-center"><a class="active h-full pt-6 relative text-sm xl:text-lg  font-semibold hover:text-green1  nav-Btn" href="#AboutUs">About</a></li>
+      <li class="w-1/6 px-4    flex items-center justify-center"><a class="active h-full pt-6 relative text-sm xl:text-lg  font-semibold hover:text-green1  nav-Btn" href="#OurProducts">Produncts</a></li>
+      <li class="w-1/6   relative px-4  flex items-center justify-center  "><a class="active h-full pt-6 relative text-sm xl:text-lg  font-semibold hover:text-green1  nav-Btn"  id="slide-PagebtnNav" href="#">Pages <i class="fas fa-caret-down pageIcon" ></i></a>
+      <ul class=" absolute top-full left-3 w-[150%]  bg-white rounded-xs h-0  overflow-hidden  z-50" tabindex="0" id="second-slideBarNav" >
+        <li class="text-center p-2 hover:bg-gray1"><a class="font-semibold text-sm" href="#">Pricing Plan</a></li>
+        <li class="text-center p-2 hover:bg-gray1"><a class="font-semibold text-sm" href="#OurTeam">The Team</a></li>
+        <li class="text-center p-2 hover:bg-gray1"><a class="font-semibold text-sm" href="#OurBlogs">Testimonial</a></li>
+        <li class="text-center p-2 hover:bg-gray1"><a class="font-semibold text-sm" href="#">Blog Grid</a></li>
+        <li class="text-center p-2 hover:bg-gray1"><a class="font-semibold text-sm" href="#">Blog Detail</a></li>
+      </ul>
+      </li>
+      <button class="bg-green1 w-1/6 py-1 text-white login ">Login </button>
+    </ul>
+   </div>
+          <span class="lg:hidden"><i class=" fas fa-bars cursor-pointer text-2xl py-1 px-3 mt-2 small:mt-0 border-[1px] border-gray-500  " id="navbar"></i></span>
+          <ul class="  w-full bg-white flex flex-col lg:hidden items-start px-2 mt-2 h-0 overflow-y-scroll   " id="slideBar">
+            <li class="mt-2 w-full"><a class="text-base font-semibold hover:text-green1 " href="">Home</a></li>
+            <li class="mt-2 w-full"><a class="text-base font-semibold hover:text-green1 " href="">Service</a></li>
+            <li class="mt-2 w-full"><a class="text-base font-semibold hover:text-green1 " href="">About</a></li>
+            <li class="mt-2 w-full"><a class="text-base font-semibold hover:text-green1 " href="">Produncts</a></li>
+            <li class="mt-2 w-full"><a class="text-base font-semibold hover:text-green1  " id="slide-Pagebtn" href="#">Pages <i class="pageIcon fas fa-caret-down" ></i></a>
+            <ul class="  w-full mt-2  rounded-xs h-0 overflow-hidden  " id="second-slideBar">
+              <li class="text-center px-2 py-1 hover:bg-gray1"><a class="font-semibold text-sm" href="">Pricing Plan</a></li>
+              <li class="text-center px-2 py-1 hover:bg-gray1"><a class="font-semibold text-sm" href="">The Team</a></li>
+              <li class="text-center px-2 py-1 hover:bg-gray1"><a class="font-semibold text-sm" href="">Testimonial</a></li>
+              <li class="text-center px-2 py-1 hover:bg-gray1"><a class="font-semibold text-sm" href="">Blog Grid</a></li>
+              <li class="text-center px-2 py-1 hover:bg-gray1"><a class="font-semibold text-sm" href="">Blog Detail</a></li>
+            </ul>
+            </li>
+            <button class="bg-green1 w-full my-2 py-1 text-white login ">Login </button>
+          </ul>
+        </div>
+      </div>
+      <!-- menu pic part -->
+      <div class=" relative bg-center bg-cover flex items-center justify-center lg:justify-start p-4 lg:py-8 lg:pl-20 " style="background-image:url(../img/hero.jpg) ;" >
+<img class="w-full h-full absolute top-0 left-0  bg-red-300" src="../img/hero.jpg" alt="">
+<div class=" flex flex-col  z-10 ">
+  <div class="  flex flex-col items-center lg:items-start p-4">
+    <h1 class="text-4xl lg:text-7xl font-semibold lg:font-bold">PET SHOP</h1>
+    <h3 class="text-2xl lg:text-4xl  mt-3 text-center font-semibold text-white">MAKE YOUR PETS HAPPY</h3>
+    <p class="text-center lg:text-left  mt-3 text-xl lg:text-3xl text-white sm:w-96  ">Dolore tempor clita lorem rebum kasd eirmod dolore diam eos kasd. Kasd clita ea justo est sed kasd erat clita sea</p>
+  </div>
+  <div class=" flex flex-col  items-center   sm:flex-row sm:justify-around sm:item-center   p-2 ">
+    <button class="py-2 lg:py-4 px-4 lg:px-10 bg-transparent text-white border-[1px] lg:font-semibold border-white hover:bg-white hover:text-black">READ MORE</button>
+    <div class=" flex items-center   mt-4 sm:mt-0   p-2">
+      <i class="fas fa-play mr-5 text-xs cursor-pointer bg-white p-5 text-green1 rounded-full flex items-center justify-center" id="playIcon"></i>
+      <p class="font-semibold text-white" >Play Video</p>
+
+    </div>
+  </div>
+</div>
+      </div>
+        <!-- video part -->
+<div class="w-full h-full p-2   fixed -top-full  left-0 z-50 flex flex-col items-center justify-center bg-transparent transition-all duration-500" id="videoPart">
+  <div class="small:w-2/3 flex flex-col items-center mt-12 p-2">
+    <span><i class='fas fa-times bg-gray-300 p-2  text-2xl mb-2 text-green1 cursor-pointer' id="closeVideo"></i></span>
+  <video class="w-full h-full" src="../../..//VID_20200325_011014_481.mp4" controls></video>
+  </div>
+</div>
+    </div>
+
+
+    <!-- About Us part -->
+ <div class="   flex items-center justify-center p-4" id="AboutUs">
+<div class="w-full mt-20  flex flex-col lg:flex-row  xl:px-16">
+  <!-- <div class="h-full lg:h-full lg:w-1/3  lg:mx-4 bg-center bg-cover" style="background-image:url(../img/about.jpg) ;"> -->
+  <img class="lg:w-1/3 lg:mx-4 " src="../img/about.jpg" alt="">
+  <div class="lg:w-2/3 lg:h-full lg:mx-10  lg:flex lg:flex-col lg:justify-between ">
+    <div class=" mt-10 lg:mt-0 p-4 pl-14 border-l-[6px] border-green1">
+    <h3 class="text-xs sm:text-lg font-semibold text-green1">ABOUT US</h3>
+  <h1 class="text-2xl  sm:text-5xl font-bold  ">WE KEEP YOUR PETS HAPPY ALL TIME</h1>
+    </div>
+    <p class=" mt-10 text-lg sm:text-2xl font-semibold text-gray-600">Diam dolor diam ipsum tempor sit. Clita erat ipsum et lorem stet no labore lorem sit clita duo justo magna dolore</p>
+    <div class="bg-gray1 flex flex-col p-4 mt-10 ">
+      <div class="w-full flex item-center justify-between  ">
+        <button class="cursor-pointer font-semibold text-green1 w-1/2 text-center text-xs sm:text-lg  py-2 " id="overMissionBtn">OUR MISSION</button>
+        <button class="cursor-pointer font-semibold text-green1 w-1/2 text-center text-xs sm:text-lg  py-2 " id="overVissionBtn">OUR VISSION</button>
+      </div>
+      <p class="sm:text-lg text-gray-500 " id="overMissionPart" >hadi Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+      <p class="sm:text-lg text-gray-500 hidden " id="overVissionPart" >Tempor erat elitr at rebum at at clita aliquyam consetetur. Diam dolor diam ipsum et, tempor voluptua sit consetetur sit. Aliquyam diam amet diam et eos sadipscing labore. Clita erat ipsum et lorem et sit, sed stet no labore lorem sit. Sanctus clita duo justo et tempor consetetur takimata eirmod, dolores takimata consetetur invidunt magna dolores aliquyam dolores dolore. Amet erat amet et magna</p>
+    </div>
+
+  </div>
+</div>
+ </div>
+
+
+ <!-- SERVICES -->
+<div class="  flex flex-col px-5  sm:px-20  md:px-10 lg:px-24 pb-2" id="ourServices">
+  <div class=" mt-20">
+    <div class="   pl-10 border-l-[6px]  border-green1">
+      <h3 class="text-xs sm:text-lg font-semibold text-green1">SERVICES</h3>
+    <h1 class="text-2xl  sm:text-4xl font-bold    lg:text-5xl ">OUR EXCELLENT <br> PET <br> CARE SERVICES</h1>
+      </div>
+      <div class=" py-2 grid gap-8  md:grid-cols-2 grid-rows-3  mt-8 ">
+        <div class="bg-gray1     flex   mt-2 p-4 ">
+          <i class="fas fa-home  text-green1 text-4xl lg:text-6xl  "></i>
+          <div class=" px-4 flex flex-col items-start ">
+            <h4 class="text-xl lg:text-2xl font-bold">PET BOARDING</h4>
+            <p class="text-xl mt-2 text-gray-400 ">Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <p class=" my-4  text-xl text-green1 cursor-pointer group "><a href="">READ MORE</a><i class="fas fa-arrow-right ml-1  group-hover:scale-x-[200%] group-hover:ml-4 "></i></p>
+          </div>
+        </div>
+        <div class="bg-gray1    flex  mt-2 p-4 ">
+          <i class="fas fa-bone  text-green1 text-4xl lg:text-6xl"></i>
+          <div class=" px-4">
+            <h4 class="text-xl lg:text-2xl font-bold">PET FEEDING</h4>
+            <p class="text-xl mt-2 text-gray-400  ">Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <p class=" my-4  text-xl text-green1 cursor-pointer group"><a href="">READ MORE</a><i class="fas fa-arrow-right ml-1 group-hover:scale-x-[200%] group-hover:ml-4"></i></p>
+          </div>
+        </div>
+        <div class="bg-gray1     flex  mt-2 p-4 ">
+          <i class="fas fa-cut  text-green1 text-4xl lg:text-6xl"></i>
+          <div class=" px-4">
+            <h4 class="text-xl lg:text-2xl font-bold">PET GROOMING</h4>
+            <p class="text-xl mt-2 text-gray-400 ">Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <p class=" my-4  text-xl text-green1 cursor-pointer group"><a href="">READ MORE</a><i class="fas fa-arrow-right ml-1 group-hover:scale-x-[200%] group-hover:ml-4"></i></p>
+          </div>
+        </div>
+        <div class="bg-gray1     flex  mt-2 p-4 ">
+          <i class="fas fa-dog  text-green1 text-4xl lg:text-6xl"></i>
+          <div class=" px-4">
+            <h4 class="text-xl lg:text-2xl font-bold">PET TRAINING</h4>
+            <p class="text-xl mt-2 text-gray-400 ">Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <p class=" my-4  text-xl text-green1 cursor-pointer group"><a href="">READ MORE</a><i class="fas fa-arrow-right ml-1 group-hover:scale-x-[200%] group-hover:ml-4"></i></p>
+          </div>
+        </div>
+        <div class="bg-gray1    flex  mt-2 p-4 ">
+          <i class="fas fa-stethoscope  text-green1 text-4xl lg:text-6xl"></i>
+          <div class=" px-4">
+            <h4 class="text-xl lg:text-2xl font-bold">PET FEEDING</h4>
+            <p class="text-xl mt-2 text-gray-400 ">Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <p class=" my-4  text-xl text-green1 cursor-pointer group"><a href="">READ MORE</a><i class="fas fa-arrow-right ml-1 group-hover:scale-x-[200%] group-hover:ml-4"></i></p>
+          </div>
+        </div>
+        <div class="bg-gray1    flex  mt-2 p-4 ">
+          <i class="fas fa-heartbeat  text-green1 text-4xl lg:text-6xl"></i>
+          <div class=" px-4">
+            <h4 class="text-xl lg:text-2xl font-bold">PET TREATMENT</h4>
+            <p class="text-xl mt-2 text-gray-400 ">Kasd dolor no lorem sit tempor at justo rebum rebum stet justo elitr dolor amet sit</p>
+            <p class=" my-4  text-xl text-green1 cursor-pointer group"><a href="">READ MORE</a><i class="fas fa-arrow-right ml-1 group-hover:scale-x-[200%] group-hover:ml-4"></i></p>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+
+<!-- PRODUCTS -->
+<div class=" px-5 sm:px-20  md:px-10 lg:px-24  pb-2 flex flex-col  " id="OurProducts">
+  <div class="mt-20 ">
+    <div class="pl-6   md:pl-10 border-l-[6px]   border-green1">
+      <h3 class="text-xs sm:text-lg font-semibold text-green1">PRODUCTS</h3>
+    <h1 class="text-2xl  sm:text-4xl font-bold    lg:text-5xl ">PRODUCTS FOR <br> YOUR BEST <br> FRIENDS</h1>
+      </div>
+  <div class="swiper-container w-full flex flex-col sm:flex-row sm:flex-wrap  py-4">
+    <!-- <div class="swiper mySwiper  my-4">
+      <div class="swiper-wrapper ">
+        <div class=" swiper-slide  bg-gray1 small:px-4 py-2 pb-8 flex flex-col items-center cursor-pointer group">
+         <img src="../img/product-1.png" alt="">
+         <p class="mt-2 text-lg font-semibold">Quality pet food</p>
+         <p class="mt-2 text-2xl font-semibold text-green1">$14</p>
+         <div class="bg-green1 absolute left-1/2 -translate-x-1/2 -translate-y-8   flex   items-center justify-between ">
+          <i class="far fa-eye   px-4 py-2 cursor-pointer hover:bg-gray1 border-[1px]  border-green1"></i>
+          <i class="fas fa-cart-plus   px-4 py-2 cursor-pointer hover:bg-gray1 border-[1px]  border-green1"></i>
+         </div>
+        </div>
+       
+      </div>
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-pagination"></div>
+    </div> -->
+    
+   
+
+  </div>
+  </div>
+  </div>
+
+
+  <!-- SPECIAL OFFER -->
+<div class=" px-5 mt-20 sm:px-20  md:px-10 lg:px-24 flex items-center justify-center bg-red-400 bg-cover bg-center relative " style="background-image:url(../img/offer.jpg) ;">
+  <img class="w-[200%] h-full absolute  top-0 left-0 md:hidden  " src="../img/offer.jpg" alt="">
+<div class="z-10  flex flex-col justify-start py-4  ">
+  <div class="   pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+    <h3 class="text-xs sm:text-lg font-semibold text-green1">SPECIAL OFFER</h3>
+  <h1 class="text-xl  sm:text-4xl font-bold text-white    lg:text-5xl ">SAVE 50% ON ALL <br> ITEMS YOUR <br> FIRST ORDER</h1>
+    </div>
+    <p class="mt-10 text-white md:text-xl md:w-1/2">Eirmod sed tempor lorem ut dolores sit kasd ipsum. Dolor ea et dolore et at sea ea at dolor justo ipsum duo rebum sea. Eos vero eos vero ea et dolore eirmod et. Dolores diam duo lorem. Elitr ut dolores magna sit. Sea dolore sed et.</p>
+    <div class="mt-10 flex p-4">
+      <button class="bg-white text-xs py-2 px-4 mx-1 md:py-4 md:px-8 md:text-base hover:text-white hover:bg-transparent border-2 border-white">SHOPE NOW</button>
+      <button class=" text-xs py-2 px-4 mx-1 border-2 border-white text-white hover:bg-white hover:text-black md:py-4 md:px-8 md:text-base">READ MORE</button>
+    </div>
+</div>  
+</div>
+
+
+<!-- offer part -->
+<div class="px-5 sm:px-20  md:px-10 lg:px-24">
+  <div class=" mt-20 w-full    flex flex-col items-center">
+    <div class=" w-full  pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+      <h3 class="text-xs sm:text-lg font-semibold text-green1">SPECIAL OFFER</h3>
+    <h1 class="text-2xl  sm:text-4xl font-bold     lg:text-5xl ">Offer</h1>
+  </div>
+  <div class="md:h-16 md:w-52  w-28 h-8 bg-red-600 rounded-md mt-4 flex justify-around items-center ">
+    <div class="hour px-1 md:p-2 md:px-3 rounded-md bg-white text-red-600 font-semibold text-center" >00</div>
+    <span class="text-white">:</span>
+    <div class="min px-1 md:p-2 md:px-3 rounded-md bg-white text-red-600 font-semibold text-center" >00</div>
+    <span class="text-white">:</span>
+    <div class="second px-1 md:p-2 md:px-3 rounded-md bg-white text-red-600 font-semibold text-center" >00</div>
+    
+ </div>
+ <h3 class=" w-full mt-2 text-center border-[1px] border-red-600 text-red-600 p-1 small:text-xl sm:text-3xl" id="offer-Title"></h3>
+        <div class="swiper mySwiper2  w-full  mt-4">
+          <div class="swiper-wrapper slideCountainer ">
+
+            <!-- <div class="my-10  swiper-slide  bg-gray1 small:px-4 py-2 pb-8 flex flex-col items-center cursor-pointer group">
+              <img src="../img/product-1.png" alt="">
+              <p class="mt-2 text-lg font-semibold">Quality pet food</p>
+              <p class="mt-2 text-2xl font-semibold text-green1">$14</p>
+              <div class="bg-green1 absolute left-1/2 -translate-x-1/2 -bottom-6   flex   items-center justify-between ">
+               <i class="far fa-eye   px-4 py-2 cursor-pointer hover:bg-gray1 border-[1px]  border-green1"></i>
+               <i class="fas fa-cart-plus   px-4 py-2 cursor-pointer hover:bg-gray1 border-[1px]  border-green1"></i>
+              </div>
+             </div> -->
+        
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          
+        </div>
+          
+        </div>
+      </div>
+
+
+<!-- TEAM MEMBERS -->
+      <div class= "px-5 relative sm:px-20  md:px-10 lg:px-24" id="OurTeam">
+        <div>
+          <div class=" mt-20  pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+            <h3 class="text-xs sm:text-lg font-semibold text-green1">TEAM MEMBERS</h3>
+          <h1 class="text-xl  sm:text-4xl font-bold    lg:text-5xl ">QUALIFIED PETS <br> CARE <br> PROFESSIONALS</h1>
+            </div>
+            <div class="relative swiper mySwiper3  w-full  mt-4">
+              <div class="swiper-wrapper memberPart ">
+    
+                <!-- <div class="my-10  swiper-slide  bg-gray1  flex flex-col items-center cursor-pointer   ">
+                  <div class="relative group w-full h-52 bg-cover bg-center hover:bg-[length:110%_110%]  bg-blue-600 p-4  hover:transition-all hover:duration-500 after:w-0 after:h-0  after:hover:w-full  after:hover:h-full after:bg-green2 after:absolute after:top-1/2 after:left-1/2 after:-translate-x-1/2 after:-translate-y-1/2 after:transition-all after:duration-300" style="background-image:url(../img/team-1.jpg) ;">
+                   <div class="w-full  absolute left-0 bottom-0 flex items-center justify-around pt-1 z-10" >
+                     <i class=" fab fa-instagram p-2 bg-white rounded-t-md"></i>
+                     <i class=" fab fa-facebook-f p-2 bg-white rounded-t-md"></i>
+                     <i class=" fab fa-twitter p-2 bg-white rounded-t-md"></i>
+                   </div>
+                  </div>
+                  <h1 class="text-2xl  mt-2 font-semibold">Full Name</h1>
+                  <h3 class="text-base mt-2">	Designation</h3>
+                 </div> -->
+            
+              </div>
+            </div>
+            <span class="swiper-next-button p-2  group bg-green1 flex items-center justify-center absolute top-[70%] z-20 right-0"><i class="group-hover:text-black text-white text-xl  fas fa-chevron-left "></i></span>
+            <span class="swiper-prev-button p-2  group bg-green1 flex items-center justify-center absolute top-[80%] z-20 right-0"><i class="group-hover:text-black text-white text-xl  fas fa-chevron-right"></i></span>
+        </div> 
+      </div>
+
+
+<!-- comments -->
+<div class="h-[700px] bg-cover p-8 flex flex-row-reverse " style="background-image:url(../img/testimonial.jpg) ;">
+<div class="w-full sm:w-1/2 h-full bg-white flex items-center  ">
+  <div class="swiper mySwiper4  w-full  mt-4">
+    <div class="swiper-wrapper commentPart ">
+
+      <!-- <div class=" swiper-slide  bg-gray1 small:px-8 py-2 pb-8 flex flex-col items-center  ">
+        <img class="w-20 h-20" src="../img/testimonial-1.jpg" alt="">
+       <div class=" mt-8 p-4 flex flex-col items-center  "> 
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, voluptatem? Obcaecati aliquam sint dignissimos, sunt perspiciatis nisi animi reiciendis et.</p>
+        <span class="h-[2px] w-20 mt-4 bg-gray-400"></span>
+        <h2 class="mt-4 text-xl">User Name</h2>
+        <p class="mt-2">Profesion</p>
+       </div>
+       </div> -->
+  
+    </div>
+    <div class="swiper-button-next "></div>
+    <div class="swiper-button-prev "></div>
+    
+  </div>
+</div>
+</div>
+    
+
+<!-- LATEST BLOG -->
+<div class="flex flex-col px-5  sm:px-20  md:px-10 lg:px-24 pb-2" id="OurBlogs">
+  <div class="mt-20">
+    <div class=" w-full  pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+      <h3 class="text-xs sm:text-lg font-semibold text-green1">LATEST BLOG</h3>
+    <h1 class="text-2xl  sm:text-4xl font-bold     lg:text-5xl ">LATEST ARTICLES <br> FROM OUR BLOG <br> POST</h1>
+    </div>
+    <div class= "flex flex-col md:flex-row md:justify-between  p-4 mt-10">
+      <div class="bg-gray1 flex w-full  flex-col sm:flex-row mt-2 md:mx-2">
+        <img class="w-full sm:w-2/5" src="../img/blog-1.jpg" alt="">
+        <div class=" flex flex-col p-2">
+          <div class="flex justify-around ">
+           <p>Design</p>
+           <p>2045</p>
+          </div>
+          <h1 class="mt-6 text-xl font-semibold">DOLOR SIT MAGNA REBUM CLITA REBUM DOLOR</h1>
+          <p class="mt-4 text-base">Ipsum sed lorem amet dolor amet duo ipsum amet et dolore est stet tempor eos dolor</p>
+        </div>
+      </div>
+      <div class="bg-gray1 flex w-full  flex-col sm:flex-row mt-2 md:mx-2">
+        <img class="w-full sm:w-2/5" src="../img/blog-2.jpg" alt="">
+        <div class=" flex flex-col p-2">
+          <div class="flex justify-around ">
+           <p>Design</p>
+           <p>2045</p>
+          </div>
+          <h1 class="mt-6 text-xl font-semibold">DOLOR SIT MAGNA REBUM CLITA REBUM DOLOR</h1>
+          <p class="mt-4 text-base">Ipsum sed lorem amet dolor amet duo ipsum amet et dolore est stet tempor eos dolor</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
+<!-- footer -->
+<div class="mt-20 bg-red-500 ">
+  <div class="bg-gray1  pt-20 p-8 flex flex-col md:flex-row md:flex-wrap">
+
+    <div class="md:w-1/2 lg:w-1/4 mt-12"> 
+      <div class=" w-full  pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+      <h3 class="text-xl font-bold ">GET IN TOUCH</h3>
+      </div>
+      <p class="mt-4 text-base font-semibold text-gray-500">No dolore ipsum <br> accusam no lorem. <br> Invidunt sed clita kasd <br> clita et et dolor sed dolor</p>
+      <p class="mt-4 text-gray-500 text-base"><i class="fas fa-map-marker-alt text-green1 mr-2"></i>123 Street, New York, USA</p>
+      <p class="mt-4 text-gray-500 text-base"><i class="fas fa-envelope-open-text text-green1 mr-2"></i>info@example.com</p>
+      <p class="mt-4 text-gray-500 text-base"><i class="fas fa-phone-volume text-green1 mr-2"></i>+012 345 67890</p>
+    </div>
+
+    <div class="md:w-1/2 lg:w-1/4 mt-12 flex flex-col">
+      <div class=" w-full  pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+        <h3 class="text-xl font-bold ">QUICK LINKS</h3>
+        </div>
+        <a class="text-base text-gray-500 mt-4" href="#Home"><i class="fas fa-arrow-right text-green1 mr-2"></i>Home</a>
+        <a class="text-base text-gray-500 mt-4" href="#AboutUs"><i class="fas fa-arrow-right text-green1 mr-2"></i>About Us</a>
+        <a class="text-base text-gray-500 mt-4" href="#ourServices"><i class="fas fa-arrow-right text-green1 mr-2"></i>Our Services</a>
+        <a class="text-base text-gray-500 mt-4" href="#OurTeam"><i class="fas fa-arrow-right text-green1 mr-2"></i>Meet The Team</a>
+        <a class="text-base text-gray-500 mt-4" href="#OurBlogs"><i class="fas fa-arrow-right text-green1 mr-2"></i>Latest Blog</a>
+        <a class="text-base text-gray-500 mt-4" href="#OurProducts"><i class="fas fa-arrow-right text-green1 mr-2"></i>Products</a>
+    </div>
+  
+    <div class="md:w-1/2 lg:w-1/4 mt-12 flex flex-col">
+      <div class=" w-full  pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+        <h3 class="text-xl font-bold ">POPULAR LINKS</h3>
+        </div>
+        <a class="text-base text-gray-500 mt-4" href="#Home"><i class="fas fa-arrow-right text-green1 mr-2"></i>Home</a>
+        <a class="text-base text-gray-500 mt-4" href="#AboutUs"><i class="fas fa-arrow-right text-green1 mr-2"></i>About Us</a>
+        <a class="text-base text-gray-500 mt-4" href="#ourServices"><i class="fas fa-arrow-right text-green1 mr-2"></i>Our Services</a>
+        <a class="text-base text-gray-500 mt-4" href="#OurTeam"><i class="fas fa-arrow-right text-green1 mr-2"></i>Meet The Team</a>
+        <a class="text-base text-gray-500 mt-4" href="#OurBlogs"><i class="fas fa-arrow-right text-green1 mr-2"></i>Latest Blog</a>
+        <a class="text-base text-gray-500 mt-4" href="#OurProducts"><i class="fas fa-arrow-right text-green1 mr-2"></i>Products</a>
+    </div>
+
+    <div class="md:w-1/2 lg:w-1/4 mt-12">
+      <div class=" w-full  pl-6 md:pl-10 border-l-[6px]  border-green1 ">
+        <h3 class="text-xl font-bold ">NEWSLETTER</h3>
+        </div>
+        <div class="flex mt-4">
+          <input class="p-4 w-2/3" placeholder="Your Email" type="text">
+          <button class="bg-green1 p-2 w-1/3 text-sm text-white">SIGN UP</button>
+        </div>
+    <h1 class="text-lg font-semibold  mt-4">FOLLOW US</h1>
+        <div class=" w-1/2 flex items-center justify-between mt-4">
+          <span class=" p-1 border-[1px] border-green1 rounded-md w-1/4 flex items-center justify-center cursor-pointer text-green1 hover:bg-green1 hover:text-white"><i class=" fab fa-instagram"></i></span>
+          <span class=" p-1 border-[1px] border-green1 rounded-md w-1/4 flex items-center justify-center cursor-pointer text-green1 hover:bg-green1 hover:text-white"><i class=" fab fa-facebook-f"></i></span>
+          <span class=" p-1 border-[1px] border-green1 rounded-md w-1/4 flex items-center justify-center cursor-pointer text-green1 hover:bg-green1 hover:text-white"><i class=" fab fa-twitter"></i></span>
+        </div>
+    </div>
+    
+<p class="text-gray-500 w-full text-lg text-center mt-12">Terms & Conditions | Privacy Policy | Customer Support | Payments | Help | FAQs</p>
+
+  </div>
+  <div class="bg-gray-800 w-full p-4 px-12 flex flex-col items-center md:flex-row md:items-center md:justify-between"> 
+<p class="text-gray1 text-base mt-2 text-center">© Your Site Name. All Rights Reserved.</p>
+<p class="text-gray1 text-base mt-2 text-center">Designed by HTML Codex</p>
+  </div>
+</div>
+
+
+
+
+
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
